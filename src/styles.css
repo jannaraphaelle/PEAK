@@ -1,6 +1,11 @@
-html, body {
+html, body, #root {
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+.app-shell {
+  min-height: 100vh;
 }
 
 * {
@@ -540,19 +545,20 @@ button {
 
 .send-btn,
 .search-btn {
-  background: var(--primary-bright);
   color: white;
-  padding: 0 30px;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #bc13fe, #6a11cb);
+  padding: 0 16px;
+  font-size: 0.95rem;
   transition: 0.3s;
 }
 
 .send-btn:hover,
 .search-btn:hover {
   background: #e600ff;
-  box-shadow: 0 0 15px var(--primary-bright);
+  box-shadow: 0 0 12px var(--primary-bright);
 }
 
 .blink {
@@ -562,23 +568,29 @@ button {
 }
 
 .support-page-container {
-  flex-grow: 1;
+  flex: 1;
+  width: min(1040px, 90%);
+  margin: 0 auto;
+  padding: 20px 0 24px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 60px 5%;
+  justify-content: center;
 }
 
 .support-header {
+  flex-shrink: 0;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 14px;
 }
 
 .support-header h1 {
   font-family: Impact, sans-serif;
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.05;
+  color: #fff;
 }
 
 .search-container {
@@ -586,61 +598,85 @@ button {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--primary);
   border-radius: 30px;
-  width: min(100%, 500px);
+  width: min(480px, 100%);
   margin: 0 auto;
   overflow: hidden;
 }
 
 .search-container input {
-  border: none;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  outline: none;
   border-radius: 0;
-  background: transparent;
+}
+
+.search-container input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-container input:focus {
+  border-color: #bc13fe;
+  box-shadow: inset 0 0 0 1px #bc13fe;
 }
 
 .support-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 960px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  align-content: start;
+  align-items: start;
 }
 
 .support-card {
   background: rgba(26, 10, 46, 0.8);
   border: 1px solid rgba(188, 19, 254, 0.2);
-  padding: 40px 20px;
-  border-radius: 12px;
+  border-radius: 10px;
+  padding: 14px 12px;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  transition: 0.3s;
-  cursor: pointer;
+  height: 150px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .support-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--primary);
-  background: rgba(188, 19, 254, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+  border-color: rgba(204, 0, 255, 0.35);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24), 0 0 14px rgba(188, 19, 254, 0.12);
 }
 
 .card-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 1.9rem;
+  margin: 0 0 8px;
 }
 
 .support-card h3 {
   color: #00f2ff;
-  margin-bottom: 12px;
-  font-size: 1.5rem;
+  margin-bottom: 7px;
+  font-size: 1.02rem;
+  line-height: 1.2;
 }
 
 .support-card p {
-  color: #bbb;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .footer {
-  padding: 25px;
+  padding: 20px;
   background: rgba(0, 0, 0, 0.6);
   color: #666;
   text-align: center;
@@ -702,6 +738,18 @@ button {
   .row-title {
     margin-left: 20px;
   }
+  
+  .support-page-container {
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+    padding: 24px 0 28px;
+  }
+
+  .support-grid {
+    grid-template-columns: repeat(2, 1fr);
+    overflow: visible;
+  }
 }
 
 @media (max-width: 600px) {
@@ -721,6 +769,19 @@ button {
 
   .featured-wrapper {
     min-height: auto;
+  }
+
+  .chatbot-window {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    height: 60vh;
+    bottom: 84px;
+  }
+
+  .chatbot-toggle {
+    right: 16px;
+    bottom: 16px;
   }
 }
 .chatbot-toggle {
@@ -909,33 +970,19 @@ button {
   box-shadow: 0 0 14px rgba(188, 19, 254, 0.4);
 }
 
-@media (max-width: 600px) {
-  .chatbot-window {
-    left: 12px;
-    right: 12px;
-    width: auto;
-    height: 60vh;
-    bottom: 84px;
-  }
-
-  .chatbot-toggle {
-    right: 16px;
-    bottom: 16px;
-  }
-}
-
 .landing-page {
-  min-height: 100vh;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   animation: landingBgChange 20s infinite;
-  overflow: hidden;
 }
 
 .landing-overlay {
-  min-height: 100vh;
+  min-height: 80.4vh;
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   display: flex;
@@ -962,4 +1009,26 @@ button {
   100% {
     background-image: url('/assets/CYBERPUNK2077.jpg');
   }
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+.landing-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.landing-content {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 }

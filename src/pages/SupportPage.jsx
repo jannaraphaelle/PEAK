@@ -1,9 +1,9 @@
 const supportCards = [
   { icon: '👤', title: 'My Account', description: 'Create and manage your PEAK account settings.' },
   { icon: '🎮', title: 'Games & Downloads', description: 'Troubleshoot game installs and patch updates.' },
-  { icon: '📱', title: 'Mobile Support', description: 'Help with connecting your mobile device to PEAK.' },
-  { icon: '💳', title: 'Billing & Payments', description: 'Manage subscriptions and view your transaction history.' },
-  { icon: '🛡️', title: 'Security', description: 'Keep your account safe with 2FA and password tips.' },
+  { icon: '📱', title: 'Mobile Support', description: 'Connect your mobile device to PEAK.' },
+  { icon: '💳', title: 'Billing & Payments', description: 'Manage your subscriptions and transactions.' },
+  { icon: '🛡️', title: 'Security', description: 'Keep your account safe with 2FA and tips.' },
   { icon: '🚀', title: 'Technical Issues', description: 'Report bugs or performance lag to our tech team.' },
 ];
 
